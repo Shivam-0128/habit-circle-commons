@@ -36,7 +36,7 @@ function SignUp() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     const parsed = schema.safeParse({ displayName, email, password });
-    if (!parsed.success) return toast.error(parsed.error.issues[0].message);
+    if (!parsed.success) { toast.error(parsed.error.issues[0]?.message ?? "Invalid input"); return; }
     setBusy(true);
     const { data, error } = await supabase.auth.signUp({
       email: parsed.data.email,
@@ -44,8 +44,8 @@ function SignUp() {
       options: { data: { display_name: parsed.data.displayName }, emailRedirectTo: window.location.origin },
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
-    if (!data.session) return toast.error("Account created, but sign-in failed. Please sign in.");
+    if (error) { toast.error(error.message); return; }
+    if (!data.session) { toast.error("Account created, but sign-in failed. Please sign in."); return; }
     navigate({ to: "/habits" });
   }
 

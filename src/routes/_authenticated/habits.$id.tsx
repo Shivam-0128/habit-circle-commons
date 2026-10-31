@@ -121,7 +121,7 @@ function HabitPage() {
             </li>
           ))}
         </ul>
-        <form onSubmit={(e) => { e.preventDefault(); if (!comment.trim()) return; post.mutate(); }} className="space-y-2">
+        <form onSubmit={(e) => { e.preventDefault(); if (comment.trim()) post.mutate(); }} className="space-y-2">
           <Label htmlFor="cm">Comment</Label>
           <Textarea id="cm" maxLength={2000} value={comment} onChange={(e) => setComment(e.target.value)} />
           <Button type="submit" disabled={post.isPending}>Post comment</Button>

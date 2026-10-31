@@ -56,7 +56,7 @@ function MyHabits() {
       <h1 className="text-4xl font-bold">My habits</h1>
 
       <form
-        onSubmit={(e) => { e.preventDefault(); if (!name.trim()) return toast.error("Habit name is required"); add.mutate(); }}
+        onSubmit={(e) => { e.preventDefault(); if (!name.trim()) { toast.error("Habit name is required"); return; } add.mutate(); }}
         className="space-y-4 rounded-xl border bg-card p-6 shadow-soft"
       >
         <div className="space-y-1.5"><Label htmlFor="hn">Habit name</Label><Input id="hn" maxLength={200} value={name} onChange={(e) => setName(e.target.value)} /></div>

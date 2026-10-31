@@ -24,7 +24,7 @@ export function currentStreak(days: string[]): number {
   if (days.length === 0) return 0;
   const set = new Set(days);
   const latest = [...set].sort().at(-1)!;
-  const [y, m, d] = latest.split("-").map(Number);
+  const [y = 0, m = 1, d = 1] = latest.split("-").map(Number);
   let streak = 0;
   let cursor = new Date(y, m - 1, d);
   while (set.has(toDayString(cursor))) {
