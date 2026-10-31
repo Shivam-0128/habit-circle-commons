@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 
-export const Route = createFileRoute("/_authenticated/habits")({
+export const Route = createFileRoute("/_authenticated/habits/")({
   head: () => ({
     meta: [
       { title: "My habits — Habit Circle" },
